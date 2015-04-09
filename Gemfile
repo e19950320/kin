@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-
-gem'coffee-script-source','1.8.0'
+gem 'simple_form','~>3.0.2'
+gem 'coffee-script-source','1.8.0'
 gem 'devise','~> 3.3.0'
 gem 'bootstrap-sass', '~> 3.2.0.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
