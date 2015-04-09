@@ -28,7 +28,7 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = Link.new(link_params)
-    @link = current_usr.links.build(link_params)
+    @link = current_user.links.build(link_params)
     respond_to do |format|
       if @link.save
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
@@ -64,6 +64,19 @@ class LinksController < ApplicationController
     end
   end
 
+
+    def upvote
+      @link = Link.find(params[:id])
+      @link.upvote_by current_user
+      redirect_to :back
+    end
+ 
+    def downvote
+      @link = Link.find(params[:id])
+      @link.downvote_by current_user
+      redirect_to :back
+    end
+    
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
@@ -75,9 +88,11 @@ class LinksController < ApplicationController
       params.require(:link).permit(:title, :url)
     end
 
-  def authorized_user
-    @link = current_user.links.find_by(id: params[:id])
-    redirect_to links_path, notice: "Not authorized to edit this link" if @link.nil?
-  end
+
+    def authorized_user
+      @link = current_user.links.find_by(id: params[:id])
+      redirect_to links_path, notice: "Not authorized to edit this link" if @link.nil?
+    end
+
 
 end
