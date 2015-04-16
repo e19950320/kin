@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150409033212) do
+ActiveRecord::Schema.define(version: 20150409030250) do
 
   create_table "comments", force: true do |t|
     t.integer  "link_id"
@@ -24,9 +23,6 @@ ActiveRecord::Schema.define(version: 20150409033212) do
 
   add_index "comments", ["link_id"], name: "index_comments_on_link_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
-=======
-ActiveRecord::Schema.define(version: 20150409024511) do
->>>>>>> add_acts_as_votable
 
   create_table "links", force: true do |t|
     t.string   "title"
